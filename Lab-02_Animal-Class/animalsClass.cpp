@@ -143,8 +143,8 @@ void Animal::displayInfo() const
 
 void showMenu();
 void addAnimals(Animal [], int);
-void displayAnimal(Animal [], int);
-bool quiting();
+void displayAnimal(const Animal [], int);
+// bool quiting();
 
 
 //********************************************************************************************************
@@ -158,6 +158,8 @@ int main()
     const int ADD = 1, DISPLAY = 2, QUIT = 3;   // Constant values for the menu choice option.
     int animalCount = 0, choice;                // Number of animals currently in the array.
     bool canContinue = true;                    // Boolean value used as a "flag" in order to manage the do while.
+    bool close = false;                         // Boolean value use to relate the closing of the program.
+    char confirm;                               // Chararacter variable for the decision to quit the program.
    
     
     // Class declaration
@@ -182,7 +184,25 @@ int main()
                 displayAnimal(animals, animalCount);
                 break;
             case QUIT:
-                canContinue = quiting();
+                cout << "Are you sure you want to quit? (Y/N): ";
+                cin >> confirm;
+                
+                if (confirm == 'Y' || confirm == 'y')
+                {
+                    close = true;
+                }else if (confirm == 'N' || confirm == 'n')
+                {
+                    close = false;
+                }else
+                {
+                    cout << "Invalid choice. Please enter 'Y' (yes) or 'N'(no)." << endl;
+                    continue;
+                }
+                
+                if (close == true)
+                {
+                    canContinue = false;
+                }
                 break;
         }
         
@@ -200,7 +220,7 @@ int main()
 
 void showMenu()
 {
-    system("clear");
+    
     cout << "\n\t\tANIMAL LOVER MENU\n\n"
          << "1. Enter a new animal\n"
          << "2. View animal entry\n"
@@ -227,7 +247,7 @@ void addAnimals(Animal animals[], int count)
         cout << endl;
         
         cout << "Enter the Animal's Color: ";
-       cin >> color;
+        cin >> color;
         cout << endl;
         
         cout << "Enter how many legs does the animal have: ";
@@ -235,7 +255,7 @@ void addAnimals(Animal animals[], int count)
         cout << endl;
         
         animals[count] = Animal(name, weight, color, legAmount);
-        ++count;
+        count++;
     } else
     {
         cout << "Maximum number of animals reached.\n";
@@ -244,7 +264,7 @@ void addAnimals(Animal animals[], int count)
 
 void displayAnimal(const Animal animals[], int count)
 {
-    for (int i = 0; i < count; ++i)
+    for (int i = 0; i < count; i++)
     {
         cout << "Animal " << i + 1 << ":\n";
         animals[i].displayInfo();
@@ -253,8 +273,8 @@ void displayAnimal(const Animal animals[], int count)
     }
 }
 
-
-bool quiting()
+// Had the idea of making a function for the quit but had issues and was not running so I did it inline.
+/*bool quiting()
 {
     bool close = false;                         // Boolean value use to relate the closing of the program.
     char confirm;                               // Chararacter variable for the decision to quit the program.
@@ -276,4 +296,4 @@ bool quiting()
     
 
     return close;
-}
+}*/
