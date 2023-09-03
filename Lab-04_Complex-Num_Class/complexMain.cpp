@@ -1,5 +1,5 @@
 // Lab - 03 Complex Class - Operator Overloading
-// Alberto A. Colón - 67689
+// Alberto A. Colï¿½n - 67689
 // CECS 2223
 
 #include <iostream>
