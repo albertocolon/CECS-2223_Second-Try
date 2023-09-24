@@ -12,7 +12,7 @@ using namespace std;
 
 // Point Class methods definitions
 
-Point::Point(int x, int)
+Point::Point(int x, int y)
 {
     this->x = x;
     this->y = y;
