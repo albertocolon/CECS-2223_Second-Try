@@ -20,7 +20,18 @@ class Shape
     int howManyPoints;
 
     public:
-    
+    Shape(const Point & a = Point(0, 0),const Point & b = Point(0, 3), const Point & c = Point(3, 5));
+    Shape(const Shape * aShape);
+    ~Shape();
+
+    Shape & operator = (const Shape & aShape);
+
+    bool addVertex(const Point & aPoint);
+    bool removeVertex(int vertexPosition);
+    int vertexAmount() const;
+
+    friend istream & operator >> (istream & in, Shape & aShape);
+    friend ostream & operator << (ostream & out, const Shape & aShape);
 
 };
 
