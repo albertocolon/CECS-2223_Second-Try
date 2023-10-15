@@ -57,7 +57,7 @@ int Shape::vertexAmount() const
     return this->howManyPoints;
 }
 
-void addVertex(const Point & aPoint)
+void Shape::addVertex(const Point & aPoint)
 {
     // It is created a new dinamic array with one more space
     Point * array = new Point[this->howManyPoints + 1];

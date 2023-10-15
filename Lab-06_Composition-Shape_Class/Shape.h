@@ -16,11 +16,11 @@ using namespace std;
 class Shape
 {
     private:
-    Point points[6];
+    Point * points;
     int howManyPoints;
 
-   /*const Point & operatpor[](int index) const;
-    Point & operator[](int index);*/
+   const Point & operator [](int index) const;
+   Point & operator[](int index);
 
     public:
     Shape(const Point & a = Point(0, 0),const Point & b = Point(0, 3), const Point & c = Point(3, 5));
