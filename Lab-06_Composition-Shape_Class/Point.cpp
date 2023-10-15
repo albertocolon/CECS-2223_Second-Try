@@ -15,18 +15,19 @@ using namespace std;
 
 Point::Point(int x, int y)
 {
-    this->x = x;
+    this->x = x;    
     this->y = y;
 }
 
 Point::Point(const Point & aPoint)
 {
-    (*this) = aPoint;
+    this->x = aPoint.x;
+    this->y = aPoint.y;
 }
 
 Point::~Point()
 {
-    // None resourse to freed.
+    // None resource to free.
 }
 
 Point & Point::operator = (const Point & aPoint)
