@@ -7,6 +7,7 @@
 
 #include "Point.h"
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -53,6 +54,11 @@ void Point::setX(int x)
 void Point::setY(int y)
 {
     this->y = y;
+}
+
+double Point::distance(const Point & aPoint) const
+{
+    return(sqrt(pow((this->x - aPoint.x), 2) + pow((this->y - aPoint.y), 2)));
 }
 
 ostream & operator << (ostream & out, const Point & aPoint)

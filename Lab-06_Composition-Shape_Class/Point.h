@@ -30,6 +30,8 @@ class Point
     void setX(int x);
     void setY(int y);
 
+    double distance(const Point & aPoint) const;
+
     friend ostream & operator << (ostream & out, const Point & aPoint);
     friend istream & operator >> (istream & in, Point & aPoint);
 
