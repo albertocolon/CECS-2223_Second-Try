@@ -48,8 +48,8 @@ class MyStringArray
     friend MyStringArray & operator +(const MyString &aMyString, const MyStringArray &anArray);
     friend MyStringArray & operator +(const char *aString, const MyStringArray &anArray);
 
-    bool isfull() const;
-    bool isempty() const;
+    bool isFull() const;
+    bool isEmpty() const;
 
     bool include(const MyString &aMyString) const;
     bool include(const char *aString) const;
@@ -60,11 +60,11 @@ class MyStringArray
     int indexOfLast(const char *aString) const;
 
     bool remove(int index);
-    bool removeFirst() const;
-    bool removeLast() const;
+    bool removeFirst();
+    bool removeLast();
     bool remove(int index, MyString &aMyString);
-    bool removeFirst(MyString &aMyString) const;
-    bool removeLast(MyString &aMyString) const;
+    bool removeFirst(MyString &aMyString);
+    bool removeLast(MyString &aMyString);
 
     MyStringArray & operator -(const MyString &aMyString);
     MyStringArray & operator -(const char *aString);
