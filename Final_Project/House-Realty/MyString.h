@@ -3,6 +3,7 @@
 
 #ifndef _MyString_h
 #define _MyString_h
+#define _CRT_SECURE_NO_WARNINGS // Add this line to use strcpy_s
 
 #include <iostream>
 #include <string>

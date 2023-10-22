@@ -1,5 +1,6 @@
 // Definitons for all the methods of the MyString class declared in MyString.h
 
+#define _CRT_SECURE_NO_WARNINGS // Add this line to use strcpy_s
 #include "MyString.h"
 #include <cstring>
 #include <iostream>
@@ -28,8 +29,10 @@ MyString::~MyString()
 
 MyString & MyString::operator =(const char * s)
 {
-    strcpy_s(this->s, MAX_LEN + 1, s);
-    return (*this);
+    return ((*this) = MyString(s));
+
+    /*strcpy_s(this->s, MAX_LEN + 1, s);
+    return (*this);*/
 }
 
 MyString & MyString::operator =(char ch)
@@ -41,24 +44,23 @@ MyString & MyString::operator =(char ch)
 
 MyString & MyString::operator =(const MyString & aMyString)
 {
-    strcpy_s(this->s, MAX_LEN + 1, aMyString.s);
+    (*this) = aMyString.s;
     return (*this);
 
     /*
-         (*this) = aMyString.s;
-         return (*this);
+        strcpy_s(this->s, MAX_LEN + 1, aMyString.s);
+        return (*this);
     */
 }
 
 void MyString::setS(const char * s)
 {
-    strcpy_s(this->s, MAX_LEN + 1, s);
+    (*this) = s;
+
+    /*
+        strcpy_s(this->s, MAX_LEN + 1, s);
+    */
 }
-
-// ************************************************************************************************
-//                 FROM THIS POINT ON IS TO BE COPIED ON THE FINAL PROJECT                        *
-// ************************************************************************************************
-
 
 const char * MyString::getS() const
 {
@@ -73,8 +75,16 @@ int MyString::len() const
 MyString MyString::operator +(const char * s) const
 {
     MyString r(*this);
-    strcat_s(r.s, MAX_LEN + 1, s);
+    int len = strlen(s);
+    if((this->len() + len) <= MAX_LEN)
+    {
+        strcat(r.s, s);
+    }
     return (r);
+
+    /*MyString r(*this);
+    strcat_s(r.s, MAX_LEN + 1, s);
+    return (r);*/
 }
 
 MyString MyString::operator+(char ch) const
