@@ -317,3 +317,112 @@ void MyStringArray::descendingSort()
         }
     }
 }
+
+bool MyStringArray::replace(int index, const char *aString)
+{
+    return(this->replace(index, MyString(aString)));
+}
+
+bool MyStringArray::replace(int index, const MyString &aMyString)
+{
+    bool replace = false;
+
+    if(index >= 0 && index < this->amount)
+    {
+        (*this)[index] = aMyString;
+        replace = true;
+    }
+
+    return(replace);
+}
+
+bool MyStringArray::remove(int index)
+{
+    MyString temp;
+
+    return(this->remove(index, temp));
+}
+
+bool MyStringArray::removeFirst()
+{
+    MyString temp;
+
+    return(this->removeFirst(temp));
+}
+
+bool MyStringArray::removeLast()
+{
+    MyString temp;
+
+    return(this->removeLast(temp));
+}
+
+MyStringArray & operator -(const char *aString, MyStringArray &anArray)
+{
+    anArray.remove(anArray.indexOf(aString));
+
+    return(anArray);
+}
+
+MyStringArray & operator -(const MyString &aMyString, MyStringArray &anArray)
+{
+    anArray.remove(anArray.indexOf(aMyString));
+
+    return(anArray);
+}
+
+int MyStringArray::indexOfLast(const MyString &aMyString) const
+{
+    int index = -1;
+
+    for(int i = this->amount - 1; i >= 0 && index == -1; i--)
+    {
+        if((*this)[i] == aMyString)
+        {
+            index = i;
+        }
+    }
+
+    return(index);
+}
+
+int MyStringArray::indexOfLast(const char *aString) const
+{
+    return(this->indexOfLast(MyString(aString)));
+}
+
+int MyStringArray::arrayAmount() const
+{
+    return(this->amount);
+}
+
+bool MyStringArray::insertAtEnd(const MyStringArray & anArray)
+{
+    return(this->insert(this->amount, anArray));
+}
+
+bool MyStringArray::insertAtStart(const MyStringArray & anArray)
+{
+    return(this->insert(0, anArray));
+}
+
+bool MyStringArray::insert(int index, const MyStringArray & anArray)
+{
+    bool inserted = false;
+    if(((this->amount + anArray.amount) <= MAX) && (index >= 0 && index <= this->amount))
+    {
+        for(int i = 0; i < anArray.amount; i++)
+        {
+            this->insert(index + i, anArray[i]);
+        }
+
+        inserted = true;
+    }
+
+    return(inserted);
+}
+
+int MyStringArray::MaxArrays()
+{
+    return(MAX);
+}
