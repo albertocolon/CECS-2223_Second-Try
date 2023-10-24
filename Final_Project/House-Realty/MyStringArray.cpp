@@ -212,3 +212,108 @@ bool MyStringArray::remove(int index, MyString & aMyString)
 
     return(removed);
 }
+
+bool MyStringArray::removeFirst(MyString &aMyString)
+{
+    return(this->remove(0, aMyString));
+}
+
+bool MyStringArray::removeLast(MyString &aMyString)
+{
+    return(this->remove(this->amount - 1, aMyString));
+}
+
+MyStringArray & operator +(const char *aString, MyStringArray &anArray)
+{
+    anArray.insertAtStart(aString);
+
+    return(anArray);
+}
+
+ostream & operator <<(ostream & out, const MyStringArray &anArray)
+{
+    if(anArray.isEmpty())
+    {
+        out << "The array is empty." << endl;
+    }else
+    {
+        for(int i = 0; i <anArray.amount; i++)
+        {
+            out << (i + 1) << ". " << anArray[i] << endl;
+        }
+    }
+
+    return(out);
+
+}
+
+void MyStringArray::ascendingSort()
+{
+    int n = this->amount;
+
+    MyString temp;
+    bool switched = true;
+
+    for(int pass = 0; pass < (n - 1) && switched; pass++)
+    {
+        switched = false;
+
+        for(int j = 0; j < (n - 1 - pass); j++)
+        {
+            if((*this)[j] > (*this)[j + 1])
+            {
+                temp = (*this)[j];
+                (*this)[j] = (*this)[j + 1];
+                (*this)[j + 1] = temp;
+                switched = true;
+            }
+        }
+    }
+}
+
+bool MyStringArray::operator==(const MyStringArray & anArray) const
+{
+    bool equal = (this->amount == anArray.amount);
+
+    if(equal)
+    {
+        for(int j = 0; j < this->amount && equal; j++)
+        {
+            if((*this)[j] != anArray[j])
+            {
+                equal = false;
+            }
+        }
+    }
+
+    return(equal);
+
+}
+
+bool MyStringArray::operator!=(const MyStringArray &anArray) const
+{
+    return(!(*this == anArray));
+}
+
+void MyStringArray::descendingSort()
+{
+    int n = this->amount;
+
+    MyString temp;
+    bool switched = true;
+
+    for(int pass = 0; pass < (n - 1) && switched; pass++)
+    {
+        switched = false;
+        for(int j = 0; j <(n - 1 - pass); j++)
+        {
+            if((*this)[j] < (*this)[j + 1])
+            {
+                temp = (*this)[j];
+                (*this)[j] = (*this)[j + 1];
+                (*this)[j + 1] = temp;
+                switched = true;
+            }
+        }
+    }
+}
