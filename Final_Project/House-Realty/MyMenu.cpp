@@ -57,3 +57,50 @@ const MyString &MyMenu::getDescription()const
     return((*this)[0]);
 }
 
+const MyString &MyMenu::getQuestion()const
+{
+    return((*this)[1]);
+}
+
+int MyMenu::getOptionCount()const
+{
+    return((this->list).arrayAmount() -2);
+}
+
+MyMenu &MyMenu::operator+(const MyString &option)
+{
+    (this->list) + option;
+    return(*this);
+}
+
+MyMenu &MyMenu::operator+(const char *option)
+{
+    (this->list) + option;
+    return(*this);
+}
+
+const MyString & MyMenu::operator[](int index)const
+{
+    return((this->list)[index]);
+}
+
+MyString &MyMenu::operator[](int index)
+{
+    return((this->list)[index]);
+}
+
+ostream &operator<<(ostream &out, const MyMenu &aMenu)
+{
+    out << aMenu.getDescription() << endl;
+
+    for(int i = 0; i < aMenu.getOptionCount(); i++)
+    {
+        out << '\t' << (i + 1) << ". " << aMenu[i + 2] << endl;
+    }
+
+    out << aMenu.getQuestion() << endl;
+
+    return(out);
+}
+
+// I got up to page 7.
