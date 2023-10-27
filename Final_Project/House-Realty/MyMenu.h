@@ -40,8 +40,8 @@ class MyMenu
 
     int getOptionCount() const;
 
-    bool aggregateOption(const MyString & option);
-    bool aggregateOption(const char * option);
+    bool addOption(const MyString & option);
+    bool addOption(const char * option);
 
     MyMenu &operator+(const MyString & option);
     MyMenu &operator+(const char * option);

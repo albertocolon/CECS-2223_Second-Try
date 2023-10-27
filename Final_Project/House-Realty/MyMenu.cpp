@@ -123,12 +123,12 @@ const MyString & MyMenu::getOption(int index) const
     return((*this)[index + 2]);
 }
 
-bool MyMenu::aggregateOption(const MyString &option)
+bool MyMenu::addOption(const MyString &option)
 {
     return((this->list).insertAtEnd(option));
 }
 
-bool MyMenu::aggregateOption(const char *option)
+bool MyMenu::addOption(const char *option)
 {
     return((this->list).insertAtEnd(option));
 }
