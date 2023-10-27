@@ -103,4 +103,34 @@ ostream &operator<<(ostream &out, const MyMenu &aMenu)
     return(out);
 }
 
-// I got up to page 7.
+void MyMenu::setOption(int index, const MyString &option)
+{
+    int amount = (this->list).arrayAmount();
+
+    if(index >= 0 && index < amount)
+    {
+        (*this)[index + 2] = option;
+    }
+}
+
+void MyMenu::setOption(int index, const char *optioin)
+{
+    this->setOption(index, MyString(optioin));
+}
+
+const MyString & MyMenu::getOption(int index) const
+{
+    return((*this)[index + 2]);
+}
+
+bool MyMenu::aggregateOption(const MyString &option)
+{
+    return((this->list).insertAtEnd(option));
+}
+
+bool MyMenu::aggregateOption(const char *option)
+{
+    return((this->list).insertAtEnd(option));
+}
+
+
