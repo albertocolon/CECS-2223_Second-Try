@@ -15,14 +15,14 @@ class Record
     bool active;     // In order to determine which properties are active or not
 
     public:
-    Record(const House &aHouse = House());
+    Record(const House &data = House());
     Record(const Record &aRecord);
 
     ~Record();
 
     Record &operator=(const Record &aRecord);
 
-    void setData(const House &aHouse);
+    void setData(const House &data);
     const House &getData()const;
 
     void activate();
