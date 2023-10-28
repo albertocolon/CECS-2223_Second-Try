@@ -16,13 +16,14 @@
 #include <stdio.h>
 #include <cstring>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
 class House: public Properties
 {
     private:
-    MyInt ID;
+    MyInt id;
     double price;
     MyDate addDate;
 
@@ -46,13 +47,10 @@ class House: public Properties
 
     virtual void print()const;
     virtual void input();
-    virtual void printToFile(ofstream &out)const;
+
 
     friend ostream &operator<<(ostream &out, const House &aHouse);
     friend istream &operator>>(istream &in, House &aHouse);
-    
-    friend ofstream &operator<<(ofstream &out, const House &aHouse);
-    friend ifstream &operator>>(ifstream &in, House &aHouse);
 
     friend bool operator==(const House &aHouse, const House &bHouse);
     friend bool operator!=(const House &aHouse, const House &bHouse);
