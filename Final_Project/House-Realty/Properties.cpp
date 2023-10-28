@@ -215,6 +215,8 @@ ostream &operator<<(ostream &out, const Properties &aProperty)
     return out;
 }
 
+
+
 // Path: Final_Project/House-Realty/MyString.cpp
 
 
