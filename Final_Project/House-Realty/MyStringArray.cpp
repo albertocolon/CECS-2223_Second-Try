@@ -247,6 +247,22 @@ ostream & operator <<(ostream & out, const MyStringArray &anArray)
 
 }
 
+istream & operator >>(istream & in, MyStringArray &anArray)
+{
+    int amount;
+
+    cout << "Enter the amount of strings: ";
+    in >> amount;
+
+    for(int i = 0; i < amount; i++)
+    {
+        cout << "Enter the string #" << (i + 1) << ": ";
+        in >> anArray[i];
+    }
+
+    return(in);
+}
+
 void MyStringArray::ascendingSort()
 {
     int n = this->amount;

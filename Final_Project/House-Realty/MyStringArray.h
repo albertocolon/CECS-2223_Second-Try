@@ -90,6 +90,7 @@ class MyStringArray
     static int MaxArrays();
 
     friend ostream & operator <<(ostream &out, const MyStringArray &anArray);
+    friend istream & operator >>(istream &in, MyStringArray &anArray);
 };
 
 #endif // MYSTRINGARRAY_H
