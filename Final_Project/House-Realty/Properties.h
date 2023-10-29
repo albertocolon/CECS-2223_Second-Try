@@ -35,13 +35,7 @@ class Properties
     virtual ~Properties();
 
     Properties &operator=(const Properties &aProperty);
-    
-    /*Properties &operator+(const MyString &aString);
-    Properties &operator+(const char *aString);
-    Properties &operator+(const MyStringArray &anArray);
-    Properties &operator-(const MyString &aString);
-    Properties &operator-(const char *aString);
-    Properties &operator-(const MyStringArray &anArray);*/
+
 
     void setBedrooms(const MyInt &aBedroom);
     void setBedrooms(const int &aBedroom);
@@ -66,7 +60,6 @@ class Properties
     friend ostream &operator<<(ostream &out, const Properties &aProperty);
     friend istream &operator>>(istream &in, Properties &aProperty);
 
-    virtual MyString getType() const = 0;
 
 };
 
