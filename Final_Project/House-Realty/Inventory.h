@@ -6,6 +6,10 @@
 #include "House.h"
 #include "MyInt.h"
 #include "MyString.h"
+#include "MyStringArray.h"
+#include "Properties.h"
+#include "MyDate.h"
+
 #include <iostream>
 
 using namespace std;
